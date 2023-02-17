@@ -7,7 +7,7 @@ function getElementInnerText(id){
 function getInputFieldValue(id){
     const inputValueString = document.getElementById(id).value;
     inputValue = parseInt(inputValueString);
-    // inputValue.value = '';
+    inputValue.value = '';
     return inputValue;
 }
 document.getElementById('first-card').addEventListener('click', function () {
@@ -50,12 +50,21 @@ document.getElementById('forth-card').addEventListener('click', function(){
     serial += 1;
     const productName = getElementInnerText('forth-title');
     const productPrice = getInputFieldValue('forth-price');
-    productPrice.value = '';
+    document.getElementById('forth-price').value = '';
     const productQuantity = getInputFieldValue('forth-quantity')
-    productQuantity.value = '';
-    
+    document.getElementById('forth-quantity').value = '';
     const division = parseInt(productPrice) / parseInt(productQuantity);
     displayData(productName, productPrice, productQuantity, division)
+})
+document.getElementById('fifth-card').addEventListener('click', function(){
+    serial += 1;
+    const productName = getElementInnerText('fifth-title');
+    const productPrice = getInputFieldValue('fifth-price');
+    document.getElementById('fifth-price').value = '';
+    const productQuantity = getInputFieldValue('fifth-quantity')
+    document.getElementById('fifth-quantity').value = '';
+    const multiplication = parseInt(productPrice) * parseInt(productQuantity);
+    displayData(productName, productPrice, productQuantity, multiplication)
 })
 function displayData(nameOfp, priceOfp, quantityOfp, priceTotal) {
     const container = document.getElementById('table-container');
