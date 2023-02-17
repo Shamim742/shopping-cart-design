@@ -1,12 +1,22 @@
 let serial = 0;
-// for third card 
+function getElementInnerText(id){
+    const inputValue = document.getElementById(id).innerText;
+    return inputValue;
+}
+
+function getInputFieldValue(id){
+    const inputValueString = document.getElementById(id).value;
+    inputValue = parseInt(inputValueString);
+    // inputValue.value = '';
+    return inputValue;
+}
 document.getElementById('first-card').addEventListener('click', function () {
     // get the data from html 
     serial += 1;
-    const productName = document.getElementById('first-name').innerText;
-    const productPrice = document.getElementById('first-price').innerText;
+    const productName = getElementInnerText('first-name');
+    const productPrice = getElementInnerText('first-price');
     const productQuantity = document.getElementById('first-quantity').innerText;
-
+    
     const priceTotal = parseInt(productPrice) * parseInt(productQuantity);
     displayData(productName, productPrice, productQuantity, priceTotal)
 });
@@ -24,6 +34,7 @@ document.getElementById('second-card').addEventListener('click', function(event)
     displayData(pName, pPrice, pQuantity,sumTotal)
 })
 
+// for third card 
 document.getElementById('third-card').addEventListener('click', function () {
     // get the data from html 
     serial += 1;
@@ -34,6 +45,18 @@ document.getElementById('third-card').addEventListener('click', function () {
     const priceTotal = parseInt(productPrice) - parseInt(productQuantity);
     displayData(productName, productPrice, productQuantity, priceTotal)
 });
+
+document.getElementById('forth-card').addEventListener('click', function(){
+    serial += 1;
+    const productName = getElementInnerText('forth-title');
+    const productPrice = getInputFieldValue('forth-price');
+    productPrice.value = '';
+    const productQuantity = getInputFieldValue('forth-quantity')
+    productQuantity.value = '';
+    
+    const division = parseInt(productPrice) / parseInt(productQuantity);
+    displayData(productName, productPrice, productQuantity, division)
+})
 function displayData(nameOfp, priceOfp, quantityOfp, priceTotal) {
     const container = document.getElementById('table-container');
     const tr = document.createElement('tr');
