@@ -9,6 +9,36 @@ document.getElementById('first-card').addEventListener('click', function () {
     displayData(productName, productPrice, productQuantity, priceTotal)
 });
 
+document.getElementById('second-card').addEventListener('click', function(e){
+    // console.log(e.target.parentNode.parentNode.children[0].innerText)
+    const productName = e.target.parentNode.parentNode.children[0].innerText;
+    const productPrice = e.target.parentNode.parentNode.children[2].children[0].innerText;
+    const productQuantity = e.target.parentNode.parentNode.children[3].children[0].innerText;
+    console.log(productName, productPrice, productQuantity)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function displayData(productName, productPrice, productQuantity, priceTotal) {
     const container = document.getElementById('table-container');
     const tr = document.createElement('tr');
