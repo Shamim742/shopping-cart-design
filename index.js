@@ -1,6 +1,8 @@
-// for first card 
+let serial = 0;
+// for third card 
 document.getElementById('first-card').addEventListener('click', function () {
     // get the data from html 
+    serial += 1;
     const productName = document.getElementById('first-name').innerText;
     const productPrice = document.getElementById('first-price').innerText;
     const productQuantity = document.getElementById('first-quantity').innerText;
@@ -9,44 +11,37 @@ document.getElementById('first-card').addEventListener('click', function () {
     displayData(productName, productPrice, productQuantity, priceTotal)
 });
 
-document.getElementById('second-card').addEventListener('click', function(e){
+document.getElementById('second-card').addEventListener('click', function(event){
     // console.log(e.target.parentNode.parentNode.children[0].innerText)
-    const productName = e.target.parentNode.parentNode.children[0].innerText;
-    const productPrice = e.target.parentNode.parentNode.children[2].children[0].innerText;
-    const productQuantity = e.target.parentNode.parentNode.children[3].children[0].innerText;
-    console.log(productName, productPrice, productQuantity)
+    serial += 1;
+    const pName = event.target.parentNode.parentNode.children[0].innerText;
+    const pPrice = event.target.parentNode.parentNode.children[2].children[0].innerText;
+    const pQuantity = event.target.parentNode.parentNode.children[3].children[0].innerText;
+    // console.log(productName, productPrice, productQuantity)
+    
+    const sumTotal = parseInt(pPrice) + parseInt(pQuantity)
+    
+    displayData(pName, pPrice, pQuantity,sumTotal)
 })
 
+document.getElementById('third-card').addEventListener('click', function () {
+    // get the data from html 
+    serial += 1;
+    const productName = document.getElementById('third-title').innerText;
+    const productPrice = document.getElementById('third-price').innerText;
+    const productQuantity = document.getElementById('third-quantity').innerText;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function displayData(productName, productPrice, productQuantity, priceTotal) {
+    const priceTotal = parseInt(productPrice) - parseInt(productQuantity);
+    displayData(productName, productPrice, productQuantity, priceTotal)
+});
+function displayData(nameOfp, priceOfp, quantityOfp, priceTotal) {
     const container = document.getElementById('table-container');
     const tr = document.createElement('tr');
     tr.innerHTML = `
-    <td>${1}</td>
-    <td>${productName}</td>
-    <td>${productPrice}</td>
-    <td>${productQuantity}</td>
+    <td>${serial}</td>
+    <td>${nameOfp}</td>
+    <td>${priceOfp}</td>
+    <td>${quantityOfp}</td>
     <td>${priceTotal}</td>
     `;
     container.appendChild(tr);
